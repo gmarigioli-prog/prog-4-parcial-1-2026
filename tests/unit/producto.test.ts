@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { Expreso } from "../../src/models/Producto";
-import { Filtrado } from "../../src/models/Producto"
+import { Expreso, Filtrado, Pasteleria } from "../../src/models/Producto";
 
 describe('calcularPrecio()', () => {
    it('Expreso Pocillo Brasil cuesta 5020', () => {
@@ -17,5 +16,11 @@ describe('calcularPrecio()', () => {
         const producto = new Filtrado(14, 'Mediano', 'Colombia')
         const precio = producto.calcularPrecio()
         expect(precio).toBe(5900)
-    })
+})
+    it('Muffin de chocolate cuesta 2500', () => {
+        const producto = new Pasteleria(19, 'Muffin de chocolate', 2500)
+        const precio = producto.calcularPrecio()
+        expect(precio).toBe(2500)
+})
+
 });
