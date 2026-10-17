@@ -6,11 +6,10 @@ export class Expreso {
   ) {}
 
   calcularPrecio(): number {
-    const GramosPorTamanio = {Pocillo: 18, Mediano: 27, TazaGrande: 36};
+    const GramosPorTamanio = {Pocillo: 18, Mediano: 27, 'Taza grande': 36};
     const precioPorGramo = {Brasil: 140, Colombia: 180, Etiopia: 240};
     const gramos = GramosPorTamanio[this.tamanio];
     const precioGramo = precioPorGramo[this.variedad];
-
     return  2500 + gramos * precioGramo;
   }
 }
