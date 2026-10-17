@@ -33,3 +33,18 @@ describe('GET /productos', () => {
     expect(res.body).toHaveLength(20);
   });
 });
+describe('POST /pedidos', () => {
+  let app: ReturnType<typeof makeApp>;
+
+  beforeEach(() => {
+    app = makeApp(':memory:');
+  });
+
+  it('crea el pedido y devuelve 201 con su total', async () => {
+    const res = await request(app)
+      .post('/pedidos')
+      .send({ items: [{ productoId: 1, cantidad: 2 }, { productoId: 19, cantidad: 1 }] });
+    expect(res.status).toBe(201);
+    expect(res.body.total).toBe(12540);
+  });
+});
