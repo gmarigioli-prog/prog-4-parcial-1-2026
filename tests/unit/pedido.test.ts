@@ -11,4 +11,12 @@ describe('Pedido()', () => {
    const pedido = new Pedido(1, [{productoId: 1, cantidad: 2}, {productoId: 19, cantidad: 1}]);
     expect(pedido.calcularTotal(productos)).toBe(12540)
 });
+    it('pedido vacio da total 0', () => {
+        const productos = [
+            new Expreso(1, 'Pocillo', 'Brasil')
+        ]
+        const pedido = new Pedido(2, [])
+            expect(pedido.calcularTotal(productos)).toBe(0)
+
+});
 })
