@@ -7,4 +7,9 @@ describe('calcularPrecio()', () => {
     const precio = producto.calcularPrecio()
     expect(precio).toBe(5020)
 });
+    it('Expreso Taza Grande Etiopia', () =>{
+        const producto = new Expreso(9, 'Taza grande', 'Etiopia')
+        const precio = producto.calcularPrecio()
+        expect(precio).toBe(11140)
+    })
 });
