@@ -4,6 +4,9 @@ export class Expreso {
     public tamanio: string,
     public variedad: string
   ) {}
+  get nombre(): string {
+  return `Expreso ${this.tamanio} ${this.variedad}`;
+}
 
   calcularPrecio(): number {
     const GramosPorTamanio = {Pocillo: 18, Mediano: 27, 'Taza grande': 36};
@@ -19,6 +22,9 @@ export class Filtrado{
         public tamanio: string,
         public variedad: string,
     ){}
+    get nombre(): string {
+    return `Filtrado ${this.tamanio} ${this.variedad}`;
+}
 
     calcularPrecio(): number {
     const GramosPorTamanio = {Pocillo: 6, Mediano: 15, 'Taza grande': 25};

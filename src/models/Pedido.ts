@@ -5,6 +5,7 @@ export interface ItemPedido {
 
 export interface ProductoConPrecio {
   id: number;
+  nombre: string;
   calcularPrecio(): number;
 }
 
