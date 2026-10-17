@@ -20,3 +20,16 @@ describe('GET /productos/:id', () => {
     expect(res.status).toBe(404);
   });
 });
+describe('GET /productos', () => {
+  let app: ReturnType<typeof makeApp>;
+
+  beforeEach(() => {
+    app = makeApp(':memory:');
+  });
+
+  it('devuelve 200 y la lista de los 20 productos', async () => {
+    const res = await request(app).get('/productos');
+    expect(res.status).toBe(200);
+    expect(res.body).toHaveLength(20);
+  });
+});
