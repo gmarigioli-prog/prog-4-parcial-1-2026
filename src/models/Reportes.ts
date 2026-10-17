@@ -19,3 +19,15 @@ export function cantidadVendidaPorProducto(pedidos: Pedido[], productos: Product
     }
     return cantidades;
 }
+export function productoMasVendido(pedidos: Pedido[], productos: ProductoConPrecio[]): string {
+    const cantidades = cantidadVendidaPorProducto(pedidos, productos);
+    let masVendido = "";
+    let maximo = 0;
+    for (const nombre in cantidades){
+        if (cantidades[nombre] > maximo) {
+            maximo = cantidades[nombre];
+            masVendido = nombre;
+        }
+    }
+    return masVendido;
+}
