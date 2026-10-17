@@ -28,3 +28,13 @@ export class Filtrado{
     return  3200 + gramos * precioGramo;
   }
 }
+export class Pasteleria{
+    constructor(
+        public id: number,
+        public nombre: string,
+        public precioBase: number,
+    ){}
+    calcularPrecio(): number{
+        return this.precioBase;
+    }
+}
