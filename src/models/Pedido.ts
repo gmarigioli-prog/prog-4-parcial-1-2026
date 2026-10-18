@@ -12,7 +12,8 @@ export interface ProductoConPrecio {
 export class Pedido {
   constructor(
     public id: number,
-    public items: ItemPedido[]
+    public items: ItemPedido[],
+    public estado: string = 'pendiente'
   ) {}
 
   calcularTotal(productos: ProductoConPrecio[]): number {
