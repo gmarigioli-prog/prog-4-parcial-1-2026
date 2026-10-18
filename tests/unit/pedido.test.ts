@@ -19,4 +19,8 @@ describe('Pedido()', () => {
             expect(pedido.calcularTotal(productos)).toBe(0)
 
 });
+    it('un pedido nuevo arranca en estado pendiente', () => {
+        const pedido = new Pedido(3, []);
+            expect(pedido.estado).toBe('pendiente');
+});
 })
