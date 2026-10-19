@@ -35,7 +35,7 @@ export function makePedidoRouter(pedidos: Pedido[] = []) {
       return res.status(400).json({ error: 'Producto no encontrado' });
     }
 
-    const pedido = new Pedido(nextId++, parsed.data.items, parsed.data.estado);
+    const pedido = new Pedido(nextId++, parsed.data.items, parsed.data.estado || 'pendiente');
     pedidos.push(pedido);
 
     res.status(201).json({
