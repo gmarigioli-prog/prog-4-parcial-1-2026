@@ -13,9 +13,8 @@ const createSchemaPedido = z.object({
   estado: z.enum(['pendiente', 'enviado', 'entregado']).optional()
 });
 
-export function makePedidoRouter() {
+export function makePedidoRouter(pedidos: Pedido[] = []) {
   const router = Router();
-  const pedidos: Pedido[] = [];
   let nextId = 1;
 
   router.post('/', (req, res) => {

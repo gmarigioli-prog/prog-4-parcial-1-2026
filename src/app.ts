@@ -4,6 +4,9 @@ import { NoteServiceImpl } from './services/NoteService';
 import { SqliteNoteRepository } from './repositories/NoteRepository';
 import { createDb } from './db/connection';
 import { _getSentNotifications, _clearSentNotifications } from './services/notificationService';
+import { Pedido } from './models/Pedido';
+import { makePedidoRouter } from './routes/pedidos';
+import { makeReportesRouter } from './routes/reportes';
 
 // Factory: cada llamada crea una app + base nueva (útil para tests e
 // integración: nada de estado compartido entre corridas).
@@ -19,9 +22,12 @@ export function makeApp(dbPath?: string) {
   const db = createDb(resolvedPath);
   const repo = new SqliteNoteRepository(db);
   const service = new NoteServiceImpl(repo);
+  const pedidos: Pedido[] = [];
 
   app.get('/health', (_req, res) => res.json({ status: 'ok' }));
   app.use('/notes', makeNotesRouter(service));
+  app.use('/pedidos', makePedidoRouter(pedidos));
+  app.use('/reportes', makeReportesRouter(pedidos));
 
   // Endpoints de test: solo existen si NODE_ENV=test. Los usa Playwright
   // (ver e2e/helpers.ts) para dejar la base en un estado conocido antes
