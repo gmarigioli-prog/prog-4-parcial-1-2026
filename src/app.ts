@@ -5,7 +5,8 @@ import { SqliteNoteRepository } from './repositories/NoteRepository';
 import { createDb } from './db/connection';
 import { _getSentNotifications, _clearSentNotifications } from './services/notificationService';
 import { Pedido } from './models/Pedido';
-import { makePedidoRouter } from './routes/pedidos';
+import { makeProductoRouter } from './routes/productos';
+import { makePedidoRouter} from './routes/pedidos';
 import { makeReportesRouter } from './routes/reportes';
 
 // Factory: cada llamada crea una app + base nueva (útil para tests e
@@ -26,6 +27,7 @@ export function makeApp(dbPath?: string) {
 
   app.get('/health', (_req, res) => res.json({ status: 'ok' }));
   app.use('/notes', makeNotesRouter(service));
+  app.use('/productos', makeProductoRouter());
   app.use('/pedidos', makePedidoRouter(pedidos));
   app.use('/reportes', makeReportesRouter(pedidos));
 
