@@ -10,7 +10,6 @@ export function makeApp(dbPath?: string) {
   const app = express();
   app.use(express.json());
 
-  const resolvedPath = dbPath ?? (process.env.NODE_ENV === 'test' ? ':memory:' : 'data/notes.sqlite');
   const pedidos: Pedido[] = [];
 
   app.get('/health', (_req, res) => res.json({ status: 'ok' }));
