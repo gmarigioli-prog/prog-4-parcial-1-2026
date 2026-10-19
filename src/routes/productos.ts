@@ -9,7 +9,7 @@ function respuestaProducto(producto: (typeof productos)[number]) {
   };
 }
 
-export function productoRouter() {
+export function makeProductoRouter() {
   const router = Router();
 
   router.get('/', (_req, res) => {
